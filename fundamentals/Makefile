@@ -100,7 +100,7 @@ clean:
 	rm -rf build 
 	rm -f $(OBJECTS) $(wildcard test/*.exe test/*.o)
 	rm -f test/tests.log test/tests.log.old
-	rm -rf build $(OBJECTS) $(TESTS) $(PROGRAMS)
+	rm -rf build $(OBJECTS) $(TESTS) $(PROGRAMS) $(PROGRAMS_OBJ)
 #find . -name "*.gc*" -exec rm {} \;
 #rm -rf 'find . -name "*.dSYM" -print'
 
