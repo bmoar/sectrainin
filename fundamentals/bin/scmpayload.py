@@ -4,6 +4,10 @@
 # https://speakerd.s3.amazonaws.com/presentations/6486b353d27b45038d6b4286acbc9390/rop-primer.pdf
 
 '''
+compile with gcc -m32 -o shellcodeme shellcodeme.c
+'''
+
+'''
 tl;dr for ROP
 for f in function_to_exec():
     push f() addr
