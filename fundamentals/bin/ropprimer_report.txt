@@ -1,0 +1,110 @@
+Legend: code, data, rodata, value
+0xf7e55190 in system () from /lib/i386-linux-gnu/libc.so.6
+gdb-peda$ si
+[----------------------------------registers-----------------------------------]
+EAX: 0x0
+EBX: 0xf7fbf000 --> 0x1a9da8
+ECX: 0xffffd4e0 ("/bin/sh")
+EDX: 0x400
+ESI: 0x0
+EDI: 0x0
+EBP: 0x41415959 ('YYAA')
+ESP: 0xffffd4fc --> 0xf7fbf000 --> 0x1a9da8
+EIP: 0xf7e55191 (<system+1>:    sub    esp,0x8)
+EFLAGS: 0x207 (CARRY PARITY adjust zero sign trap INTERRUPT direction overflow)
+[-------------------------------------code-------------------------------------]
+   0xf7e55184:  lea    esi,[esi+0x0]
+   0xf7e5518a:  lea    edi,[edi+0x0]
+   0xf7e55190 <system>: push   ebx
+=> 0xf7e55191 <system+1>:       sub    esp,0x8
+   0xf7e55194 <system+4>:       mov    eax,DWORD PTR [esp+0x10]
+   0xf7e55198 <system+8>:       call   0xf7f3b94b
+   0xf7e5519d <system+13>:      add    ebx,0x169e63
+   0xf7e551a3 <system+19>:      test   eax,eax
+[------------------------------------stack-------------------------------------]
+0000| 0xffffd4fc --> 0xf7fbf000 --> 0x1a9da8
+0004| 0xffffd500 ("ZZXX\340\324\377\377\n\325\377\377\352\254\376\367\001")
+0008| 0xffffd504 --> 0xffffd4e0 ("/bin/sh")
+0012| 0xffffd508 --> 0xffffd50a --> 0xaceaffff
+0016| 0xffffd50c --> 0xf7feacea (add    ebx,0x12316)
+0020| 0xffffd510 --> 0x1
+0024| 0xffffd514 --> 0xffffd594 --> 0xffffd6e2 ("/home/bmoar/git/hacking/fundamentals/bin/ropprimer")
+0028| 0xffffd518 --> 0xffffd534 --> 0xc8a65b10
+[------------------------------------------------------------------------------]
+Legend: code, data, rodata, value
+0xf7e55191 in system () from /lib/i386-linux-gnu/libc.so.6
+gdb-peda$ si
+[----------------------------------registers-----------------------------------]
+EAX: 0x0
+EBX: 0xf7fbf000 --> 0x1a9da8
+ECX: 0xffffd4e0 ("/bin/sh")
+EDX: 0x400
+ESI: 0x0
+EDI: 0x0
+EBP: 0x41415959 ('YYAA')
+ESP: 0xffffd4f4 --> 0x68732f ('/sh')
+EIP: 0xf7e55194 (<system+4>:    mov    eax,DWORD PTR [esp+0x10])
+EFLAGS: 0x282 (carry parity adjust zero SIGN trap INTERRUPT direction overflow)
+[-------------------------------------code-------------------------------------]
+   0xf7e5518a:  lea    edi,[edi+0x0]
+   0xf7e55190 <system>: push   ebx
+   0xf7e55191 <system+1>:       sub    esp,0x8
+=> 0xf7e55194 <system+4>:       mov    eax,DWORD PTR [esp+0x10]
+   0xf7e55198 <system+8>:       call   0xf7f3b94b
+   0xf7e5519d <system+13>:      add    ebx,0x169e63
+   0xf7e551a3 <system+19>:      test   eax,eax
+   0xf7e551a5 <system+21>:      je     0xf7e551b0 <system+32>
+[------------------------------------stack-------------------------------------]
+0000| 0xffffd4f4 --> 0x68732f ('/sh')
+0004| 0xffffd4f8 ("YYAA")
+0008| 0xffffd4fc --> 0xf7fbf000 --> 0x1a9da8
+0012| 0xffffd500 ("ZZXX\340\324\377\377\n\325\377\377\352\254\376\367\001")
+0016| 0xffffd504 --> 0xffffd4e0 ("/bin/sh")
+0020| 0xffffd508 --> 0xffffd50a --> 0xaceaffff
+0024| 0xffffd50c --> 0xf7feacea (add    ebx,0x12316)
+0028| 0xffffd510 --> 0x1
+[------------------------------------------------------------------------------]
+Legend: code, data, rodata, value
+0xf7e55194 in system () from /lib/i386-linux-gnu/libc.so.6
+gdb-peda$ si
+[----------------------------------registers-----------------------------------]
+EAX: 0xffffd4e0 ("/bin/sh")
+EBX: 0xf7fbf000 --> 0x1a9da8
+ECX: 0xffffd4e0 ("/bin/sh")
+EDX: 0x400
+ESI: 0x0
+EDI: 0x0
+EBP: 0x41415959 ('YYAA')
+ESP: 0xffffd4f4 --> 0x68732f ('/sh')
+EIP: 0xf7e55198 (<system+8>:    call   0xf7f3b94b)
+EFLAGS: 0x282 (carry parity adjust zero SIGN trap INTERRUPT direction overflow)
+[-------------------------------------code-------------------------------------]
+   0xf7e55190 <system>: push   ebx
+   0xf7e55191 <system+1>:       sub    esp,0x8
+   0xf7e55194 <system+4>:       mov    eax,DWORD PTR [esp+0x10]
+=> 0xf7e55198 <system+8>:       call   0xf7f3b94b
+   0xf7e5519d <system+13>:      add    ebx,0x169e63
+   0xf7e551a3 <system+19>:      test   eax,eax
+   0xf7e551a5 <system+21>:      je     0xf7e551b0 <system+32>
+   0xf7e551a7 <system+23>:      add    esp,0x8
+Guessed arguments:
+arg[0]: 0x68732f ('/sh')
+[------------------------------------stack-------------------------------------]
+0000| 0xffffd4f4 --> 0x68732f ('/sh')
+0004| 0xffffd4f8 ("YYAA")
+0008| 0xffffd4fc --> 0xf7fbf000 --> 0x1a9da8
+0012| 0xffffd500 ("ZZXX\340\324\377\377\n\325\377\377\352\254\376\367\001")
+0016| 0xffffd504 --> 0xffffd4e0 ("/bin/sh")
+0020| 0xffffd508 --> 0xffffd50a --> 0xaceaffff
+0024| 0xffffd50c --> 0xf7feacea (add    ebx,0x12316)
+0028| 0xffffd510 --> 0x1
+[------------------------------------------------------------------------------]
+Legend: code, data, rodata, value
+0xf7e55198 in system () from /lib/i386-linux-gnu/libc.so.6
+gdb-peda$ x/s 0xffffd4f4
+0xffffd4f4:     "/sh"
+gdb-peda$ x/s 0xffffd4f2
+0xffffd4f2:     "in/sh"
+gdb-peda$ x/s 0xffffd4f0
+0xffffd4f0:     "/bin/sh"
+gdb-peda$
