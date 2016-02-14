@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import sys
 
 def get_bytes(write_byte, already_written):
 
@@ -11,8 +12,13 @@ def get_bytes(write_byte, already_written):
     return padding
 
 if __name__ == '__main__':
+    if len(sys.argv) < 5:
+        sys.exit('need addrs')
     already_written = 0
-    for i in [0x7f, 0x7f, 0x7f, 0x7f]:
+    if len(sys.argv) == 6:
+        already_written = int(sys.argv[5])
+    args = [ int(sys.argv[i], 16) for i in range(1, 5) ]
+    for i in args:
         padding = get_bytes(i, already_written)
         already_written = already_written + padding
         print (already_written, padding)
